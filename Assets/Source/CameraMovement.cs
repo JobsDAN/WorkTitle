@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour {
     private Transform target;
 
     private float currentZoom;
-    private float offsetZ;
+    private float offsetToTargetZ;
 
     [SerializeField]
     private int MIN_ZOOM;
@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour {
 
 	void Start () {
         cameraMovement = Vector3.zero;
-        offsetZ = Mathf.Sin(Mathf.Deg2Rad * (90 - transform.rotation.eulerAngles.x)) * transform.position.y
+        offsetToTargetZ = Mathf.Sin(Mathf.Deg2Rad * (90 - transform.rotation.eulerAngles.x)) * transform.position.y
                   / Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.x);
     }
 	
@@ -84,7 +84,7 @@ public class CameraMovement : MonoBehaviour {
             }
 
             transform.Translate(0, 0, scrollDelta);
-            offsetZ = Mathf.Sin(Mathf.Deg2Rad * (90 - transform.rotation.eulerAngles.x)) * transform.position.y
+            offsetToTargetZ = Mathf.Sin(Mathf.Deg2Rad * (90 - transform.rotation.eulerAngles.x)) * transform.position.y
                       / Mathf.Sin(Mathf.Deg2Rad * transform.rotation.eulerAngles.x);
         }
     }
@@ -93,7 +93,7 @@ public class CameraMovement : MonoBehaviour {
     {
         if (isFocused)
         {
-            transform.position = new Vector3(target.position.x, transform.position.y, target.position.z - offsetZ);
+            transform.position = new Vector3(target.position.x, transform.position.y, target.position.z - offsetToTargetZ);
         }
         else if (cameraMovement != Vector3.zero)
         {
