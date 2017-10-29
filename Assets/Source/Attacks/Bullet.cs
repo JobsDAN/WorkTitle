@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	float speed = 20f;
-	float dist = 10f;
-	int damage = 4;
+	public float Speed = 20f;
+	public int Power = 4;
 	void Start ()
 	{
 		
@@ -14,7 +13,7 @@ public class Bullet : MonoBehaviour {
 	
 	void Update ()
 	{
-		transform.position += transform.forward * speed * Time.deltaTime;
+		transform.position += transform.forward * Speed * Time.deltaTime;
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -23,6 +22,6 @@ public class Bullet : MonoBehaviour {
 		if (!eb)
 			return;
 
-		eb.TakeDamage(damage);
+		eb.TakeDamage(Power);
 	}
 }

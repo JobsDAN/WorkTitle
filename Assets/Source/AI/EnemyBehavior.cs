@@ -23,16 +23,16 @@ public class EnemyBehavior : MonoBehaviour {
     void Update()
     {
         transform.LookAt(CurrentTarget.transform);
-        transform.Translate(0, 0, enemyInfo.movementSpeed * Time.deltaTime);
+        transform.Translate(0, 0, enemyInfo.MovementSpeed * Time.deltaTime);
     }
 
     public void TakeDamage(int damage)
     {
-        enemyInfo.heals -= damage;
+        enemyInfo.HealthPoints -= damage;
         GetComponent<Renderer>().material.color = Color.red;
         CancelInvoke("ResetColor");
         Invoke("ResetColor", 0.1f);
-        if (enemyInfo.heals <= 0)
+        if (enemyInfo.HealthPoints <= 0)
             Die();
     }
 

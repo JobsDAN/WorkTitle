@@ -33,10 +33,7 @@ public class PlayerAttack : MonoBehaviour {
 	public GameObject BulletPrefab;
 
 	public float KickRadius = 2;
-	public int KickForce = 2;
-
-	public float ShotRadius = 4;
-	public int ShotForce = 1;
+	public int KickPower = 2;
 
 	private List<AttackInfo> attacks;
 
@@ -75,7 +72,7 @@ public class PlayerAttack : MonoBehaviour {
 			if (diff > 40)
 				continue;
 
-			eb.TakeDamage(KickForce);
+			eb.TakeDamage(KickPower);
 		}
 	}
 

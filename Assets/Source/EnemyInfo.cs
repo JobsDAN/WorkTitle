@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyInfo : MonoBehaviour {
-    public float movementSpeed;
-    public int heals;
+    public float MovementSpeed;
+    public int HealthPoints;
 
 	void Start()
 	{
         WorldObserver.Instance.Enemies.Add(this);
-		heals = 5;
+		HealthPoints = 5;
 	}
 	
 	void Update()
