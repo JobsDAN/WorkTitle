@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyInfo : MonoBehaviour {
     public float movementSpeed;
-    public int heals;
+    public int HealthPoints;
     public float attackRange;
     public int attackPower;
     public int attackCooldown;
@@ -13,7 +13,8 @@ public class EnemyInfo : MonoBehaviour {
 
 	void Start()
 	{
-		heals = 5;
+        WorldObserver.Instance.Enemies.Add(this);
+		HealthPoints = 5;
 	}
 	
 	void Update()

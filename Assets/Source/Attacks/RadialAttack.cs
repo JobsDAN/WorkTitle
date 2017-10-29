@@ -5,7 +5,7 @@ using UnityEngine;
 public class RadialAttack : MonoBehaviour {
 
 	public float Radius = 2;
-	public int Force = 4;
+	public int Power = 4;
 
 	float growSpeed = 2f;
 	List<GameObject> hitted;
@@ -42,7 +42,7 @@ public class RadialAttack : MonoBehaviour {
 				continue;
 
 			hitted.Add(go);
-			eb.TakeDamage(Force);
+			eb.TakeDamage(Power);
 			Debug.Log("!");
 		}
 	}
