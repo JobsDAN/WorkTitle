@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour {
     public float movementSpeed;
     public int heals;
+    public float attackRange;
+    public int attackPower;
+    public int attackCooldown;
+    
+    public float lastAttackTime;
 
 	void Start()
 	{
-        WorldObserver.Instance.Enemies.Add(this);
 		heals = 5;
 	}
 	

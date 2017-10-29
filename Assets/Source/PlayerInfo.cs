@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
-    
+    public int heals;
+
     void Start()
     {
         WorldObserver.Instance.Players.Add(this);
@@ -13,4 +14,20 @@ public class PlayerInfo : MonoBehaviour {
     {
 		
 	}
+
+    public void TakeDamage(int damage)
+    {
+        heals -= damage;
+        Debug.Log(heals);
+        GetComponent<Renderer>().material.color = Color.red;
+
+        if (heals <= 0)
+            Die();
+    }
+
+    public void Die()
+    {
+        WorldObserver.Instance.Players.Remove(this);
+        Destroy(gameObject);
+    }
 }

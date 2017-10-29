@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 targetPosition;
     private Quaternion rotationToTarget;
 
-    private Camera camera;
+    private new Camera camera;
     private CharacterController characterController;
 
 	void Start()
