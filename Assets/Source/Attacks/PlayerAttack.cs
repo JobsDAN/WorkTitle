@@ -30,6 +30,7 @@ public class PlayerAttack : MonoBehaviour {
 	private float ShotCooldown = 1;
 
 	public GameObject RadialAreaPrefab;
+	public GameObject BulletPrefab;
 
 	public float KickRadius = 2;
 	public int KickForce = 2;
@@ -81,6 +82,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Shot()
 	{
 		Debug.Log("Shot!");
+		Instantiate(BulletPrefab, transform.position, transform.rotation);
 	}
 
 	void UseAttack(AttackInfo attack)
