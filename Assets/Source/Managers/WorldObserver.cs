@@ -25,7 +25,7 @@ public class WorldObserver : MonoBehaviour {
             return instance;
         }
     }
-    #endregion
+#endregion
 
     private List<PlayerInfo> players;
     private List<EnemyInfo> enemies;
@@ -56,6 +56,13 @@ public class WorldObserver : MonoBehaviour {
         }
     }
 
+    private int scope;
+    public void EnemyKilled(EnemyInfo enemyInfo)
+    {
+        scope++;
+        enemies.Remove(enemyInfo);
+    }
+
     [SerializeField]
     private int maxEnemyCount;
 
@@ -70,14 +77,4 @@ public class WorldObserver : MonoBehaviour {
             maxEnemyCount = value;
         }
     }
-    
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

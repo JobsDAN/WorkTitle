@@ -112,7 +112,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     void Die()
     {
-        WorldObserver.Instance.Enemies.Remove(enemyInfo);
+        WorldObserver.Instance.EnemyKilled(enemyInfo);
         Destroy(gameObject);
     }
 }

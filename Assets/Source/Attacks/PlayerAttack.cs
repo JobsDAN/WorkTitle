@@ -47,13 +47,11 @@ public class PlayerAttack : MonoBehaviour {
 
 	void RadialAttack()
 	{
-		Debug.Log("Radial!");
 		Instantiate(RadialAreaPrefab, transform.position, new Quaternion());
 	}
 	
 	void Kick()
 	{
-		Debug.Log("Kick!");
 		Collider[] colliders = Physics.OverlapSphere(transform.position, KickRadius);
 		foreach (Collider c in colliders)
 		{
@@ -65,7 +63,6 @@ public class PlayerAttack : MonoBehaviour {
 			if (!eb)
 				continue;
 
-			Debug.Log("Find!");
 			Vector3 dir = c.transform.position - transform.position;
 			Quaternion enemyRot = Quaternion.LookRotation(dir);
 			float diff = Quaternion.Angle(transform.rotation, enemyRot);
@@ -78,7 +75,6 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Shot()
 	{
-		Debug.Log("Shot!");
 		Instantiate(BulletPrefab, transform.position, transform.rotation);
 	}
 
