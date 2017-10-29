@@ -218,7 +218,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1676705988784226, guid: 7a95a30393e9c3043b1f137817ab3f92,
     type: 2}
   m_PrefabInternal: {fileID: 1929219345}
---- !u!114 &1557834867
+--- !u!114 &1557834862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -229,11 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d520bb2962a0f456ba3395cec343a7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RadialCooldown: 1
-  KickCooldown: 1
-  ShotCooldown: 2
-  RadialRadius: 2
-  RadialForce: 2
 --- !u!1 &1637943382
 GameObject:
   m_ObjectHideFlags: 0

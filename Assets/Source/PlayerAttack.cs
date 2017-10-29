@@ -23,16 +23,22 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	[SerializeField]
-	private float RadialCooldown = 1;
+	private float RadialCooldown = 0.5f;
 	[SerializeField]
-	private float KickCooldown = 1;
+	private float KickCooldown = 0.5f;
 	[SerializeField]
-	private float ShotCooldown = 2;
+	private float ShotCooldown = 1;
 
-	[SerializeField]
-	private float RadialRadius = 2;
-	[SerializeField]
-	private int RadialForce = 2;
+	public float RadialRadius = 1;
+	public int RadialForce = 4;
+
+	public float KickRadius = 2;
+	public int KickForce = 2;
+
+	public float ShotRadius = 4;
+	public int ShotForce = 1;
+
+
 
 	private List<AttackInfo> attacks;
 
@@ -62,6 +68,26 @@ public class PlayerAttack : MonoBehaviour {
 	
 	void Kick() {
 		Debug.Log("Kick!");
+		Collider[] colliders = Physics.OverlapSphere(transform.position, KickRadius);
+		foreach (Collider c in colliders)
+		{
+			GameObject go = c.gameObject;
+			if (!go)
+				continue;
+
+			EnemyBehavior eb = go.GetComponent<EnemyBehavior>();
+			if (!eb)
+				continue;
+
+			Debug.Log("Find!");
+			Vector3 dir = c.transform.position - transform.position;
+			Quaternion enemyRot = Quaternion.LookRotation(dir);
+			float diff = Quaternion.Angle(transform.rotation, enemyRot);
+			if (diff > 40)
+				continue;
+
+			eb.TakeDamage(KickForce);
+		}
 	}
 
 	void Shot() {
