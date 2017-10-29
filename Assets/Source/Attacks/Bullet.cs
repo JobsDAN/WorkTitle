@@ -6,10 +6,6 @@ public class Bullet : MonoBehaviour {
 
 	public float Speed = 20f;
 	public int Power = 4;
-	void Start ()
-	{
-		
-	}
 	
 	void Update ()
 	{
