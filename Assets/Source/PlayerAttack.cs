@@ -29,6 +29,11 @@ public class PlayerAttack : MonoBehaviour {
 	[SerializeField]
 	private float ShotCooldown = 2;
 
+	[SerializeField]
+	private float RadialRadius = 2;
+	[SerializeField]
+	private int RadialForce = 2;
+
 	private List<AttackInfo> attacks;
 
 	void Start () {
@@ -40,6 +45,19 @@ public class PlayerAttack : MonoBehaviour {
 
 	void RadialAttack() {
 		Debug.Log("Radial!");
+		Collider[] colliders = Physics.OverlapSphere(transform.position, RadialRadius);
+		foreach (Collider c in colliders)
+		{
+			GameObject go = c.gameObject;
+			if (!go)
+				continue;
+
+			EnemyBehavior eb = go.GetComponent<EnemyBehavior>();
+			if (!eb)
+				continue;
+
+			eb.TakeDamage(RadialForce);
+		}
 	}
 	
 	void Kick() {
