@@ -43,6 +43,7 @@ public class EnemyBehavior : MonoBehaviour {
         }
 
 
+        Debug.Log(Vector3.Distance(transform.position, CurrentTarget.transform.position));
         if (enemyInfo.attackRange >= Vector3.Distance(transform.position, CurrentTarget.transform.position))
         {
             DealDamage(CurrentTarget);
@@ -61,6 +62,7 @@ public class EnemyBehavior : MonoBehaviour {
             if (player != null)
             {
                 player.TakeDamage(enemyInfo.attackPower);
+                enemyInfo.lastAttackTime = Time.time;
             }
         }
     }

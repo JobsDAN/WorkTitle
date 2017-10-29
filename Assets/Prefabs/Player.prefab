@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114132139276397590}
   - component: {fileID: 114018280002366674}
   - component: {fileID: 114102035142407464}
+  - component: {fileID: 195291502995430124}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -195,10 +196,10 @@ MonoBehaviour:
   ShotCooldown: 1
   RadialAreaPrefab: {fileID: 1675163458523700, guid: 70c87eaa73b594a0ba0ca7f26cff6a06,
     type: 2}
+  BulletPrefab: {fileID: 1600099919171768, guid: b6f0c1511603a493da60c871e510e3df,
+    type: 2}
   KickRadius: 2
-  KickForce: 2
-  ShotRadius: 4
-  ShotForce: 1
+  KickPower: 2
 --- !u!114 &114132139276397590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,3 +231,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &195291502995430124
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676705988784226}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

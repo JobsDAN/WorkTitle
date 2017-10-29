@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMovement : MonoBehaviour {
     public float movementSpeed;
     public float rotationSpeed;
@@ -12,12 +15,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private new Camera camera;
     private CharacterController characterController;
+    private NavMeshAgent navMeshAgent;
 
 	void Start()
     {
         targetPosition = transform.position;
 
         characterController = GetComponent<CharacterController>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         camera = Camera.main;
 	}
 	
@@ -30,15 +35,13 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Vector3.Distance(transform.position, targetPosition) > obstacleRadius)
         {
-            Move();
+            MoveTo(targetPosition);
         }
 	}
 
-    private void Move()
+    private void MoveTo(Vector3 position)
     {
-        transform.rotation = GetRotationToTarget();
-
-        characterController.Move(transform.forward * movementSpeed * Time.deltaTime);
+        navMeshAgent.destination = position;
     }
 
     private Vector3 GetTargetPosition()
@@ -52,16 +55,5 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         return transform.position;
-    }
-
-    private Quaternion GetRotationToTarget()
-    {
-        Quaternion newRotation = Quaternion.LookRotation(targetPosition - transform.position);
-        newRotation.x = 0;
-        newRotation.z = 0;
-
-        newRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
-
-        return newRotation;
     }
 }

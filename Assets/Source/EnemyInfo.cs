@@ -13,7 +13,6 @@ public class EnemyInfo : MonoBehaviour {
 
 	void Start()
 	{
-        WorldObserver.Instance.Enemies.Add(this);
 		HealthPoints = 5;
 	}
 	
