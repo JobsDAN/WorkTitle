@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 143049808368904720}
   - component: {fileID: 114132139276397590}
   - component: {fileID: 114018280002366674}
+  - component: {fileID: 114102035142407464}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -177,6 +178,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f76a104228e97ac4eb9a05c900c75e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114102035142407464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676705988784226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d520bb2962a0f456ba3395cec343a7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RadialCooldown: 0.25
+  KickCooldown: 0.5
+  ShotCooldown: 1
+  RadialAreaPrefab: {fileID: 1675163458523700, guid: 70c87eaa73b594a0ba0ca7f26cff6a06,
+    type: 2}
+  KickRadius: 2
+  KickForce: 2
+  ShotRadius: 4
+  ShotForce: 1
 --- !u!114 &114132139276397590
 MonoBehaviour:
   m_ObjectHideFlags: 1

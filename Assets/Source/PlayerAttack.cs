@@ -29,16 +29,13 @@ public class PlayerAttack : MonoBehaviour {
 	[SerializeField]
 	private float ShotCooldown = 1;
 
-	public float RadialRadius = 1;
-	public int RadialForce = 4;
+	public GameObject RadialAreaPrefab;
 
 	public float KickRadius = 2;
 	public int KickForce = 2;
 
 	public float ShotRadius = 4;
 	public int ShotForce = 1;
-
-
 
 	private List<AttackInfo> attacks;
 
@@ -51,19 +48,7 @@ public class PlayerAttack : MonoBehaviour {
 
 	void RadialAttack() {
 		Debug.Log("Radial!");
-		Collider[] colliders = Physics.OverlapSphere(transform.position, RadialRadius);
-		foreach (Collider c in colliders)
-		{
-			GameObject go = c.gameObject;
-			if (!go)
-				continue;
-
-			EnemyBehavior eb = go.GetComponent<EnemyBehavior>();
-			if (!eb)
-				continue;
-
-			eb.TakeDamage(RadialForce);
-		}
+		Instantiate(RadialAreaPrefab, transform.position, new Quaternion());
 	}
 	
 	void Kick() {
