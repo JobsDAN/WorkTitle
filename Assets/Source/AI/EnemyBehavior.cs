@@ -30,7 +30,6 @@ public class EnemyBehavior : MonoBehaviour {
 
     void Update()
     {
-<<<<<<< HEAD
         GameObject currentTarget = FindPriorityTarget();
         if (CurrentTarget == null)
         {
@@ -64,10 +63,6 @@ public class EnemyBehavior : MonoBehaviour {
                 player.TakeDamage(enemyInfo.attackPower);
             }
         }
-=======
-        transform.LookAt(CurrentTarget.transform);
-        transform.Translate(0, 0, enemyInfo.MovementSpeed * Time.deltaTime);
->>>>>>> 426d7802114fd25ce4797e0921e593969307de98
     }
 
     public void TakeDamage(int damage)
