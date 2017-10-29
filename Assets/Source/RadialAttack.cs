@@ -10,11 +10,13 @@ public class RadialAttack : MonoBehaviour {
 	float growSpeed = 2f;
 	List<GameObject> hitted;
 
-	void Start () {
+	void Start()
+	{
 		hitted = new List<GameObject>();
 	}
 
-	void Update () {
+	void Update()
+	{
 		Vector3 scale = transform.localScale;
 		scale.x += growSpeed * Time.deltaTime;
 		scale.z += growSpeed * Time.deltaTime;

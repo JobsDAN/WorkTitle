@@ -39,19 +39,22 @@ public class PlayerAttack : MonoBehaviour {
 
 	private List<AttackInfo> attacks;
 
-	void Start () {
+	void Start()
+	{
 		attacks = new List<AttackInfo>();
 		attacks.Add(new AttackInfo(KeyCode.A, RadialCooldown, RadialAttack));
 		attacks.Add(new AttackInfo(KeyCode.S, KickCooldown, Kick));
 		attacks.Add(new AttackInfo(KeyCode.D, ShotCooldown, Shot));
 	}
 
-	void RadialAttack() {
+	void RadialAttack()
+	{
 		Debug.Log("Radial!");
 		Instantiate(RadialAreaPrefab, transform.position, new Quaternion());
 	}
 	
-	void Kick() {
+	void Kick()
+	{
 		Debug.Log("Kick!");
 		Collider[] colliders = Physics.OverlapSphere(transform.position, KickRadius);
 		foreach (Collider c in colliders)
@@ -75,11 +78,13 @@ public class PlayerAttack : MonoBehaviour {
 		}
 	}
 
-	void Shot() {
+	void Shot()
+	{
 		Debug.Log("Shot!");
 	}
 
-	void UseAttack(AttackInfo attack) {
+	void UseAttack(AttackInfo attack)
+	{
 		if (Time.time - attack.last < attack.cooldown)
 			return;
 
@@ -87,12 +92,12 @@ public class PlayerAttack : MonoBehaviour {
 		attack.last = Time.time;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		foreach (AttackInfo attack in attacks) {
-			if (Input.GetKey(attack.key)) {
+	void Update()
+	{
+		foreach (AttackInfo attack in attacks)
+		{
+			if (Input.GetKey(attack.key))
 				UseAttack(attack);
-			}
 		}
 	}
 

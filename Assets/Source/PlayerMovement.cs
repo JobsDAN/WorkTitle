@@ -13,14 +13,16 @@ public class PlayerMovement : MonoBehaviour {
     private Camera camera;
     private CharacterController characterController;
 
-	void Start () {
+	void Start()
+    {
         targetPosition = transform.position;
 
         characterController = GetComponent<CharacterController>();
         camera = Camera.main;
 	}
 	
-	void Update () {
+	void Update()
+    {
 		if (Input.GetMouseButton(0))
         {
             targetPosition = GetTargetPosition();
@@ -32,7 +34,8 @@ public class PlayerMovement : MonoBehaviour {
         }
 	}
 
-    private void Move() {
+    private void Move()
+    {
         transform.rotation = GetRotationToTarget();
 
         characterController.Move(transform.forward * movementSpeed * Time.deltaTime);

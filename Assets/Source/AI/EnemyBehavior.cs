@@ -11,7 +11,8 @@ public class EnemyBehavior : MonoBehaviour {
     private EnemyInfo enemyInfo;
     private Color defaulColor;
 
-    void Start() {
+    void Start()
+    {
         defaulColor = GetComponent<Renderer>().material.color;
         enemyInfo = GetComponent<EnemyInfo>();
 
@@ -19,12 +20,14 @@ public class EnemyBehavior : MonoBehaviour {
         CurrentTarget = MainTarget;
     }
 
-    void Update() {
+    void Update()
+    {
         transform.LookAt(CurrentTarget.transform);
         transform.Translate(0, 0, enemyInfo.movementSpeed * Time.deltaTime);
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage)
+    {
         enemyInfo.heals -= damage;
         GetComponent<Renderer>().material.color = Color.red;
         CancelInvoke("ResetColor");
