@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4635102410197080}
   - component: {fileID: 33175209858888938}
-  - component: {fileID: 136754105042602468}
+  - component: {fileID: 136813070963327974}
   - component: {fileID: 23602371604441984}
   - component: {fileID: 114821475625340576}
   - component: {fileID: 114506537845804026}
@@ -94,7 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100dbf3232bca45479fffada6d7d5c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4.5
+  MovementSpeed: 4
+  HealthPoints: 5
 --- !u!114 &114821475625340576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0af794c5f301244881737bdd84d4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136754105042602468
+--- !u!136 &136813070963327974
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
