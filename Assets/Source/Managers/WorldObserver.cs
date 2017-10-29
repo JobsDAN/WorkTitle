@@ -57,9 +57,10 @@ public class WorldObserver : MonoBehaviour {
     }
 
     private int scope;
-    public void EnemyKilled()
+    public void EnemyKilled(EnemyInfo enemyInfo)
     {
         scope++;
+        enemies.Remove(enemyInfo);
     }
 
     [SerializeField]

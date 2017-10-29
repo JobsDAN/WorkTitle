@@ -91,7 +91,7 @@ public class CameraMovement : MonoBehaviour {
 
     private void Move()
     {
-        if (isFocused)
+        if (isFocused && target != null)
         {
             transform.position = new Vector3(target.position.x, transform.position.y, target.position.z - offsetToTargetZ);
         }
