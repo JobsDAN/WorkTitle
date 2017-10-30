@@ -34,8 +34,11 @@ public class PlayerMovement : MonoBehaviour {
         {
             navMeshAgent.isStopped = true;
 			Quaternion rot = Quaternion.LookRotation(seeDest - transform.position);
+            rot.x = 0;
+            rot.z = 0;
 			float diff = Quaternion.Angle(transform.rotation, rot);
-            while (diff > 15)
+            float dist = Vector3.Distance(seeDest, transform.position);
+            while (dist > 2 && diff > 15)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
                 return;
