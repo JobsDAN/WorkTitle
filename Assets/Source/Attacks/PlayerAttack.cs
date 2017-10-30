@@ -75,7 +75,9 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Shot()
 	{
-		Instantiate(BulletPrefab, transform.position, transform.rotation);
+		PlayerMovement pm = GetComponent<PlayerMovement>();
+		Vector3 pos = pm.GetTargetPosition();
+		pm.SeeAndDo(pos, () => Instantiate(BulletPrefab, transform.position, transform.rotation));
 	}
 
 	void UseAttack(AttackInfo attack)

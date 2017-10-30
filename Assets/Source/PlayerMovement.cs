@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     private new Camera camera;
     private CharacterController characterController;
     private NavMeshAgent navMeshAgent;
+    public delegate void Action();
 
 	void Start()
     {
@@ -26,8 +27,27 @@ public class PlayerMovement : MonoBehaviour {
         camera = Camera.main;
 	}
 	
+    const float EPS = 1E-5f;
 	void Update()
     {
+        if (currentAction != null)
+        {
+            navMeshAgent.isStopped = true;
+			Quaternion rot = Quaternion.LookRotation(seeDest - transform.position);
+			float diff = Quaternion.Angle(transform.rotation, rot);
+            while (diff > 15)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotationSpeed * Time.deltaTime);
+                return;
+            }
+
+            transform.rotation = rot;
+            currentAction();
+            currentAction = null;
+            navMeshAgent.isStopped = false;
+            return;
+        }
+
 		if (Input.GetMouseButton(0))
         {
             targetPosition = GetTargetPosition();
@@ -44,7 +64,7 @@ public class PlayerMovement : MonoBehaviour {
         navMeshAgent.destination = position;
     }
 
-    private Vector3 GetTargetPosition()
+    public Vector3 GetTargetPosition()
     {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -55,5 +75,14 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         return transform.position;
+    }
+
+    private Action currentAction;
+    private Vector3 seeDest;
+    private Quaternion saveRotation;
+    public void SeeAndDo(Vector3 point, Action action)
+    {
+        currentAction = action;
+        seeDest = point;
     }
 }

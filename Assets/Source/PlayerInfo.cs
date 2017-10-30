@@ -18,7 +18,6 @@ public class PlayerInfo : MonoBehaviour {
     public void TakeDamage(int damage)
     {
         heals -= damage;
-        Debug.Log(heals);
         GetComponent<Renderer>().material.color = Color.red;
 
         if (heals <= 0)

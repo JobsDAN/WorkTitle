@@ -43,7 +43,6 @@ public class RadialAttack : MonoBehaviour {
 
 			hitted.Add(go);
 			eb.TakeDamage(Power);
-			Debug.Log("!");
 		}
 	}
 
