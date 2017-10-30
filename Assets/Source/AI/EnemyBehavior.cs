@@ -8,7 +8,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBehavior : MonoBehaviour {
     public GameObject MainTarget { get; private set; }
-    public GameObject CurrentTarget { get; private set; }
 
     private EnemyInfo enemyInfo;
     private Color defaulColor;
@@ -25,13 +24,12 @@ public class EnemyBehavior : MonoBehaviour {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         MainTarget = WorldObserver.Instance.Players[Random.Range(0, WorldObserver.Instance.Players.Count)].gameObject;
-        CurrentTarget = MainTarget;
     }
 
     void Update()
     {
         GameObject currentTarget = FindPriorityTarget();
-        if (CurrentTarget == null)
+        if (currentTarget == null)
         {
             if (MainTarget == null)
             {
@@ -43,13 +41,13 @@ public class EnemyBehavior : MonoBehaviour {
         }
 
 
-        if (enemyInfo.attackRange >= Vector3.Distance(transform.position, CurrentTarget.transform.position))
+        if (enemyInfo.attackRange >= Vector3.Distance(transform.position, currentTarget.transform.position))
         {
-            DealDamage(CurrentTarget);
+            DealDamage(currentTarget);
         }
         else
         {
-            MoveToTarget();
+            MoveToTarget(currentTarget);
         }
     }
 
@@ -94,14 +92,14 @@ public class EnemyBehavior : MonoBehaviour {
         return target;
     }
 
-    private void MoveToTarget()
+    private void MoveToTarget(GameObject target)
     {
-        navMeshAgent.destination = CurrentTarget.transform.position;
+        navMeshAgent.destination = target.transform.position;
     }
 
     private void StopMoving()
     {
-        navMeshAgent.isStopped = true;
+        navMeshAgent.destination = transform.position;
     }
 
     private void ResetColor()
